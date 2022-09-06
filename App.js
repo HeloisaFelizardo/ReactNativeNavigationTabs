@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-export default function App() {
+import TelaHome from "./Componentes/TelaHome";
+import TelaDescricao from "./Componentes/TelaDescricao";
+import TelaRotas from "./Componentes/TelaRotas";
+import TelaBiblioteca from "./Componentes/TelaBiblioteca";
+
+const Abas = createBottomTabNavigator();
+
+export default function App () {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    <NavigationContainer >
+      <Abas.Navigator>
+        <Abas.Screen name="Home" component = { TelaHome }/>
+        <Abas.Screen name="Telas" component = { TelaDescricao } />
+        <Abas.Screen name="Rotas" component = { TelaRotas } />
+        <Abas.Screen name="Biblioteca" component = { TelaBiblioteca } />
+      </Abas.Navigator>
+    </NavigationContainer>
+  )
+};
